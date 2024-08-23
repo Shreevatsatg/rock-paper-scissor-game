@@ -2,24 +2,30 @@ let userscore =0;
 let compscore=0;
 
 const choices =document.querySelectorAll(".choice");
+const msg =document.querySelector("#msg");
 
 const gencompchoice =()=>{
     const option =["rock","paper","scissor"];
     const randomIDX = Math.floor(Math.random()*3);
 return option[randomIDX];
-}
+};
 
 const drawgame=() =>{
-    console.log("game was draw")
+    console.log("game was draw");
+    msg.innerText ="match draw,play again ";
 };
 
 const showwinner=(userwin) =>{
     if(userwin){
         console.log("you win!");
+        msg.innerText ="you win !";
+        msg.Style.backgroundcolor ="green";
     }else{
         console.log("you lost");
+        msg.innerText ="you lost";
+        msg.backgroundcolor ="red";
     }
-}
+};
 
 const playgame =(userchoice)=>{
     console.log("user choice",userchoice);
@@ -55,3 +61,5 @@ choices.forEach((choice) => {
 playgame(userchoice);
     })
 })
+
+//8:21
