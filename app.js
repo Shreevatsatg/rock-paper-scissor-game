@@ -3,6 +3,8 @@ let compscore=0;
 
 const choices =document.querySelectorAll(".choice");
 const msg =document.querySelector("#msg");
+const userscorepara =document.querySelector("#userscore");
+const compscorepara =document.querySelector("#computerscore");
 
 const gencompchoice =()=>{
     const option =["rock","paper","scissor"];
@@ -11,24 +13,24 @@ return option[randomIDX];
 };
 
 const drawgame=() =>{
-    console.log("game was draw");
-    msg.innerText ="match draw,play again ";
+    msg.innerText ="game was draw,play again";
 };
 
-const showwinner=(userwin) =>{
+const showwinner=(userwin,userchoice,compchoice) =>{
     if(userwin){
-        console.log("you win!");
-        msg.innerText ="you win !";
+        userscore++;
+        userscorepara.innerText =userscore;
+        msg.innerText =`you win ! your ${userchoice} beats ${compchoice}`;
         msg.Style.backgroundcolor ="green";
     }else{
-        console.log("you lost");
-        msg.innerText ="you lost";
+        compscore++;
+        compscorepara.innerText =compscore;
+        msg.innerText =`you lost ! ${compchoice} beats your ${userchoice}`;
         msg.backgroundcolor ="red";
     }
 };
 
 const playgame =(userchoice)=>{
-    console.log("user choice",userchoice);
 //generate computer choice
 const compchoice = gencompchoice();
 console.log("comp choice ",compchoice)
@@ -49,7 +51,7 @@ if( userchoice === compchoice){
 //rock,paper
 compchoice==="rock"?false:true;
     }
-showwinner(userwin);
+showwinner(userwin,userchoice,compchoice);
         }
     };
 
@@ -61,5 +63,3 @@ choices.forEach((choice) => {
 playgame(userchoice);
     })
 })
-
-//8:21
